@@ -1,0 +1,18 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  activerecord:
+    models:
+      user: Dude
+    attributes:
+      user: 
+        email: "Email"
+        password: "Mật khẩu"
+        password_confirmation: "Xác nhận mật khẩu"
+  sign_up: "Đăng ký"
+  sign_in: "Đăng nhập"
+  password: "Mật khẩu"
+  remember_me: "Ghi nhớ đăng nhập"
+  sign_in_with: "Đăng nhập với"
+  forgot_password: "Quên mật khẩu"

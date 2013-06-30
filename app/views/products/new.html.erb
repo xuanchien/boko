@@ -1,0 +1,19 @@
+<div class="five columns">
+<h3>Tao tin moi</h3>
+<%= form_for(@product) do |f| %>
+<div>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+</div>
+<div>
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+</div>
+<br style="clear:both" />
+<div>
+	<%= f.label :original_price %>
+	<%= f.text_field :original_price %>
+	</div>
+<%= f.submit "Dang tin" %>
+<% end %>
+</div>

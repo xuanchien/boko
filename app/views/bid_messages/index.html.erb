@@ -1,0 +1,23 @@
+<div class="row">
+<%= form_for(@bid_message, :url => bid_messages_path) do |f|%>
+<fieldset>
+  <legend>Gửi tin nhắn</legend>
+  <div>
+    <%= f.text_field :price, :placeholder => "Giá thương lượng", "data-price" => "" %>  
+  </div>
+  <div>
+    <%= f.text_area :message, :placeholder => "Nội dung", :rows => "5" %>  
+  </div>
+  <div>
+    <%= f.submit "Gửi", :class => "button radius" %>  
+  </div>
+</fieldset>
+<% end %>
+</div>
+
+<div class="row" id="bid-messages">
+  <%= render @messages unless @messages.blank? %>
+</div>
+<%= will_paginate(@messages) %>
+
+

@@ -1,0 +1,39 @@
+vi:
+  activerecord:
+    models:
+      user: Người dùng
+      advert: 'Tin'
+      bid_message: 'Tin nhắn'
+    attributes:
+      user: 
+        email: "Email"
+        password: "Mật khẩu"
+        password_confirmation: "Xác nhận mật khẩu"
+        remember_me: "Ghi nhớ đăng nhập"
+      advert:
+        title: "Tiêu đề tin rao vặt"
+        description: "Mô tả sản phẩm"
+        original_price: "Giá gốc"
+      bid:
+        bid_messages: "Nội dung thương lượng"
+      bid_message:
+        message: 'Nội dung'
+    errors:
+      messages:
+        too_short: "quá ngắn (ít nhất %{count} ký tự)"
+        blank: "chưa điền"
+        invalid: "không hợp lệ"
+  sign_up: "Đăng ký"
+  sign_in: "Đăng nhập"
+  sign_out: "Đăng xuất"
+  password: "Mật khẩu"
+  remember_me: "Ghi nhớ đăng nhập"
+  sign_in_with: "Đăng nhập với"
+  forgot_password: "Quên mật khẩu"
+  search: "Tìm kiếm"
+  title:
+    adverts:
+      new: "Đăng tin mới"
+  no_price: "Không có giá"
+  unauthorized:
+    already_bidded: "Bạn đã thương lượng trên sản phầm này rồi"

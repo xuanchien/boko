@@ -1,0 +1,44 @@
+<div>
+  <h3><%= @advert.title %></h3>
+  <div class='advert-info row'>
+    <span class='post-time large-10 columns'>Đưa lên lúc: <strong><%= @advert.created_at %></strong></span>
+  </div>
+  <div class='row'>
+    <hr />
+    <div class='small-12 columns' style='padding-left: 30px'>
+      <%=raw @advert.description %>
+    </div>
+  </div>
+  <div class='row'>
+    <hr />
+    <div class='small-12 columns'>
+      Giá gốc: <strong><%= render_vietnam_currency(@advert.original_price) %></strong>  
+    </div>
+  </div>
+  <br />
+  <div class='row'>
+    <div class='small-12 columns'>
+      Đã có <%= @advert.bids.count %> người thương lượng mua sản phẩm này  
+    </div>
+  </div>
+  <br />
+  <!-- Display the conversation section -->
+  <% if can? :put_price, @advert %>
+    <div>
+      <% if current_user && current_user.has_bidded_on?(@advert) %>
+        <a href="#">Xem thương lượng</a>
+      <% elsif user_signed_in? %>
+        <%= link_to "Đặt giá", "#", :class => 'button success large', "data-reveal-id" => "modal-#{@advert.id}" %>
+        <%= render :partial => "bid_window", :locals => {:advert => @advert} %>
+      <% else %>
+        <%= link_to "Đăng nhập để đặt giá", new_user_session_path, :class => 'button' %>
+      <% end %>
+      
+    </div>
+  <% end %>
+  <% if can? :view_bidder, @advert %>
+  <div>
+    Danh sách các người đặt giá
+  </div>
+  <% end %>
+</div>

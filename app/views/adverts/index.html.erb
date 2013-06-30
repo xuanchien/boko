@@ -1,0 +1,39 @@
+<ul class='large-block-grid-4' id="adverts">
+<% @adverts.each do |advert| %>
+  <li>
+    <%= render advert %>
+  </li>
+<% end %>
+</ul>
+<div id="loginModal" class="reveal-modal small">
+  <a href="javascript:void(0)" class="close-reveal-modal">&times;</a>
+  <% user = User.new %>
+  <%= form_for(user, :url => session_path(user)) do |f|%>
+    <div class="row">
+      <div>
+        <%= f.label :login, "Tên đăng nhập" %>
+        <%= f.text_field :login, :placeholder => "Email hoặc Username" %>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.label :password %>
+      <%= f.password_field :password, :placeholder => "Mật khẩu" %>
+    </div>
+    <div class="row">
+      <%= f.submit "Đăng nhập", :class => "button success small" %>
+      <br />
+      <%= link_to "Chưa có tài khoản? Đăng ký ngay", new_user_registration_path %>
+    </div>
+  <% end %>
+</div>
+<%= will_paginate(@adverts) %>
+<% if @adverts.empty? %>
+  <div class="panel">
+    <h4>Chưa có tin rao vặt</h4>
+    <% if can? :create, Advert %>
+      <p>
+        <%= link_to "Đăng tin ngay", new_advert_path, :class => "button success radius" %>
+      </p>
+    <% end %>
+  </div>
+<% end %>

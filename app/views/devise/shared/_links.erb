@@ -1,0 +1,14 @@
+<ul class="side-nav" style="width: 200px">
+  <% if !user_signed_in? %>
+  	<li><%= link_to t("sign_up"), new_user_registration_path %></li>
+  <% end %>
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+    <li><%= link_to t("forgot_password"), new_password_path(resource_name) %><br /></li>
+  <% end -%>
+  
+  <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <li><%= link_to "#{t('sign_in_with')} #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br /></li>
+    <% end -%>
+  <% end -%>
+</ul>

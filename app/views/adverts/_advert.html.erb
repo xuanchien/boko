@@ -1,0 +1,43 @@
+<ul class='pricing-table' id="advert_<%= advert.id %>">
+      <li class='title'>
+        <%= link_to render_short_text(advert.title, 20), advert_path(advert), :title => advert.title, "data-tooltip" => "", :class => "has-tip" %>
+      </li>
+      <li class='description advert-description'>
+        <%=raw render_short_text(advert.description, 140) %>
+      </li>
+      <li class='price advert-price'>
+        <%= render_vietnam_currency(advert.original_price) %>
+      </li>
+      <li class='bullet-item'>
+        <% if can? :update, advert %>
+          Có <strong><%= link_to advert.bids.count, advert_bids_path(advert) %></strong> thương lượng
+        <% else %>
+          Có <strong><%= advert.bids.count %></strong> thương lượng
+        <% end %>
+        
+      </li>
+      <li class='cta-button'>
+        <div class='advert-command'>
+          <% if can? :put_price, advert %>
+            <% if current_user %>
+              <% if current_user.has_bidded_on?(advert) %>
+                <%= link_to "Đã thương lượng", bid_messages_path(current_user.bid_on(advert)) %>
+              <% else %>
+                <%= link_to "Đặt giá", "#", :class => 'button success', "data-reveal-id" => "modal-#{advert.id}" %>
+                <%= render :partial => "bid_window", :locals => {:advert => advert} %>    
+              <% end %>
+            <% else %>
+              <%= link_to "Đặt giá", "#", :class => 'button success', "data-reveal-id" => "loginModal"%>
+            <% end %>
+            
+            <br />
+          <% end %>
+          <% if can? :update, advert %>
+            <%= link_to "Cập nhật", edit_advert_path(advert), :class => 'button small radius' %>
+          <% end %>
+          <% if can? :destroy, advert %>
+            <%= link_to "Xóa", advert_path(advert), :method => :delete, :confirm => "Bạn có chắc bạn muốn xóa tin này?", :class => 'button alert small radius' %>
+          <% end %>  
+        </div>
+      </li>
+    </ul>

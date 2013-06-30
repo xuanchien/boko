@@ -1,0 +1,20 @@
+<ul class='large-block-grid-4'>
+  <% @adverts.each do |advert| %>
+    <li>
+      <div class='advert-div'>
+        <div class='advert-title'>
+          <%= link_to advert.title, advert_path(advert) %>
+        </div>
+        <div class='advert-description'>
+          <%=raw strip_tags(advert.description) %>
+        </div>
+        <div class='advert-original-price'>
+          Giá bán gốc: <%= render_vietnam_currency(advert.original_price) %>
+        </div>
+      </div>
+      <%= link_to "Chỉnh sửa", edit_advert_path(advert), :class => 'button small' %>
+      <%= link_to "Xóa", advert_path(advert), :method => :delete, :class => 'button small alert', 
+      :confirm => "Bạn có thật sự muốn xóa tin này?" %>
+    </li>
+  <% end %>
+</ul>

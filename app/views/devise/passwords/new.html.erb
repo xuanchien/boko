@@ -1,0 +1,17 @@
+<h2>Khôi phục mật khẩu</h2>
+<div class='row'>
+  <p>Bạn sẽ nhận được một email có chứa hướng dẫn giúp bạn khôi phục lại mật khẩu. 
+  Vui lòng điền email bạn đã đăng ký với hệ thống vào bên dưới.
+  </p>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email, :autofocus => true %>
+  </div>
+  <div>
+    <%= f.submit "Gửi email", :class => "button radius" %>
+  </div>
+<% end %>
+</div>
+<%= render "devise/shared/links" %>

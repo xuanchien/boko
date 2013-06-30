@@ -1,0 +1,10 @@
+<% @adverts.each do |advert| %>
+  $("#adverts").append('<li><%= j render(advert) %></li>');  
+<% end %>
+
+$(".pagination").hideLoading();
+<% if @adverts.next_page %>  
+  $(".pagination").replaceWith('<%=j will_paginate(@adverts) %>');
+<% else %>
+  $(".pagination").remove();
+<% end %>

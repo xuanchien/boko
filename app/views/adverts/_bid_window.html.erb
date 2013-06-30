@@ -1,0 +1,12 @@
+<div id="modal-<%= advert.id %>" class="reveal-modal small bid-window-modal" data-advert-id="<%= advert.id %>">
+  <%= form_for(advert.bids.new, :url => advert_bids_path(advert), :remote => true) do %>
+  <a href="javascript:void(0)" class="close-reveal-modal">&times;</a>
+  <h4>Đặt giá</h4>
+  <p>Bạn sắp đặt giá thương lượng cho mẩu tin có tiêu đề: <strong><%= advert.title %></strong>. Vui lòng
+    điền giá vào ô bên dưới</p>
+  <input type="text" name="price" placeholder="Giá thương lượng"/>
+  <textarea name="message" placeholder="Nội dung thương lượng" rows="5"></textarea>
+  <input type="submit" value="Đặt giá" class="button success radius" />
+  <div class="status"></div>
+  <% end %>
+</div>

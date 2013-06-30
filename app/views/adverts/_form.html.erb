@@ -1,0 +1,32 @@
+<%= simple_form_for(@advert) do |f| %>
+  <div class="small-12">
+    <div class="row">
+      <div class="large-12 columns">
+        <%= f.input :title, :autofocus => true, :placeholder => "Tiêu đề" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <%= f.label :original_price %>
+        <%= f.input_field :original_price, :class => 'large-4 columns', :placeholder => "Giá gốc", "data-price" => "" %>    
+        <span id='price-string' class='success large-8 columns'></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <%= f.input :description, as: :ckeditor, :required => false %>
+      </div>
+    </div>
+    <div class="row">
+      <br />
+      <div class="large-9 columns">
+        <% if @advert.new_record? %>
+          <%= f.submit "Đăng tin", :class => 'button success' %>
+        <% else %>
+          <%= f.submit "Cập nhật", :class => 'button success' %>
+        <% end %>
+        <%= button_tag "Hủy", :class => 'button secondary', :type => 'button', :onclick => "window.location='#{adverts_path}'" %>
+      </div> 
+    </div>
+  </div>
+<% end %>

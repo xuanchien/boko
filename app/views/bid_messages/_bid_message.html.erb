@@ -1,0 +1,11 @@
+<div class='panel <%= 'owner' if bid_message.sender == current_user %>'>
+  <% if !bid_message.price.blank? %>
+    <strong><%= render_vietnam_currency(bid_message.price) %></strong>
+  <% end %>
+  <p>
+    <%= bid_message.message %>
+  </p>
+  <div class="message-info">
+    <i><strong><%= bid_message.sender.username unless bid_message.sender.nil? %></strong> đăng lúc <%= bid_message.created_at %></i>
+  </div>
+</div>

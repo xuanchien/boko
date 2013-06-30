@@ -1,0 +1,2 @@
+module BidMessagesHelper
+end
